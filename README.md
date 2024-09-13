@@ -5,6 +5,7 @@ Together do it! Toit
 ## Documentation
 
 ### Get Started
+
 ```zsh
 yarn
 

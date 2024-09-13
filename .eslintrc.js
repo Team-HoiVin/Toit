@@ -6,7 +6,7 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
-    'prettier'
+    'prettier',
   ],
   plugins: [
     'react',
@@ -17,21 +17,21 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
-      jsx: true
+      jsx: true,
     },
     ecmaVersion: 11,
-    sourceType: 'module'
+    sourceType: 'module',
   },
   settings: {
     react: {
-      version: 'detect'
-    }
+      version: 'detect',
+    },
   },
   env: {
     es6: true,
     browser: true,
     jest: true,
-    node: true
+    node: true,
   },
   rules: {
     'react-hooks/rules-of-hooks': 2,
@@ -48,25 +48,27 @@ module.exports = {
           '/^@/styles/',
           '/^@/components/',
           '/^@/lib/',
-          ['parent', 'sibling', 'index']
+          ['parent', 'index'],
         ],
         alphabetize: {
           order: 'asc',
-          ignoreCase: true
-        }
-      }
+          ignoreCase: true,
+        },
+      },
     ],
+    '@typescript-eslint/no-explicit-any': 0,
+    '@typescript-eslint/no-empty-object-type': 0,
     '@typescript-eslint/no-unused-vars': [
       2,
       {
-        argsIgnorePattern: '^_'
-      }
+        argsIgnorePattern: '^_',
+      },
     ],
     'no-console': [
       2,
       {
-        allow: ['warn', 'error']
-      }
-    ]
-  }
+        allow: ['warn', 'error'],
+      },
+    ],
+  },
 };
