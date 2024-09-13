@@ -12,6 +12,7 @@ export const metadata: Metadata = {
 
 const RootLayout: NextPage<React.PropsWithChildren> = (props) => {
   const { children } = props;
+
   return (
     <html lang='ko'>
       <body>
