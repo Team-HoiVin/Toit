@@ -13,10 +13,11 @@ jobs:
     steps:
       - name: Check PR Title
         run: |
-          title=$(jq -r '.pull_request.title' $GITHUB_EVENT_PATH)
-          if [[ "$title" =~ ^(feat|fix|chore|docs|test|style|refactor|perf|build|ci|revert)(\(.+\))?: .{1,}$ ]]; then
-            echo "PR 제목 유효성을 통과하였습니다."
-          else
-            echo "PR 제목이 잘못되었습니다. 예시) feat: 제목"
+          TITLE="${{ github.event.pull_request.title }}"
+          REGEX="^(revert: )?(feat|fix|docs|style|refactor|perf|test|workflow|build|ci|chore|types|wip)(\\(.+\\))?: .{1,72}$"
+
+          echo "Title: \"$TITLE\""
+
+          if [[ ! "$TITLE" =~ $REGEX ]]; then
             exit 1
           fi
