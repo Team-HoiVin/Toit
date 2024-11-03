@@ -7,12 +7,16 @@ Together do it! Toit
 ### Get Started
 
 ```zsh
+cp .env
+
 yarn
 
 yarn build
 yarn start
 ```
 
-### Node
+### Version
 
-- node.js `v21.7.3`
+- Node `>=20`
+- React `^18`
+- Next - `14.2.7`

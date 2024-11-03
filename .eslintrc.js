@@ -44,10 +44,13 @@ module.exports = {
       {
         newlinesBetween: 'always',
         groups: [
+          '/^react/',
           ['/^next/', 'module'],
           '/^@/styles/',
-          '/^@/components/',
           '/^@/lib/',
+          '/^@/utils/',
+          '/^@/types/',
+          '/^@/components/',
           ['parent', 'index'],
         ],
         alphabetize: {
