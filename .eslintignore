@@ -2,8 +2,6 @@
 **/.next/*
 **/out/*
 
-*.md
-
 coverage
 
 dist

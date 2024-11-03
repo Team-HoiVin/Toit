@@ -1,7 +1,8 @@
 'use client';
 
-import { useSimpleStore, useRefControlStore } from '@/store';
 import React from 'react';
+
+import { useSimpleStore, useRefControlStore } from '@/store';
 
 const ZustandTest = () => {
   const { value: count, increment, decrement } = useSimpleStore();
