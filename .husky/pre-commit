@@ -17,12 +17,11 @@ yarn prettier:check ||
 
 # Check ESLint
 echo 'ESLint를 검사합니다.'
-
-yarn eslint:check ||
-(
-  echo 'ESLint 에러가 감지되었습니다.'
-  false
-)
+yarn eslint:check
+if [ $? -ne 0 ]; then
+  echo '❌ ESLint 검사 실패: ESLint 에러가 감지되었습니다.'
+  exit 1
+fi
 
 npx lint-staged
 

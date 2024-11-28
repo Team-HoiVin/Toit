@@ -24,6 +24,37 @@ const config: Config = {
           orange: 'var(--point-orange)',
           yellow: 'var(--point-yellow)',
         },
+        background: {
+          primary: 'var(--background-primary)',
+          secondary: 'var(--background-secondary)',
+          tertiary: 'var(--background-tertiary)',
+          inverse: 'var(--background-inverse)',
+        },
+        interaction: {
+          inactive: 'var(--interaction-inactive)',
+          hover: 'var(--interaction-hover)',
+          pressed: 'var(--interaction-pressed)',
+          focus: 'var(--interaction-focus)',
+        },
+        border: {
+          primary: 'var(--border-primary)',
+        },
+        text: {
+          primary: 'var(--text-primary)',
+          secondary: 'var(--text-secondary)',
+          tertiary: 'var(--text-tertiary)',
+          default: 'var(--text-default)',
+          inverse: 'var(--text-inverse)',
+          disabled: 'var(--text-disabled)',
+        },
+        status: {
+          danger: 'var(--status-danger)',
+        },
+        icon: {
+          primary: 'var(--icon-primary)',
+          inverse: 'var(--icon-inverse)',
+          brand: 'var(--icon-brand)',
+        },
       },
       backgroundImage: {
         'brand-gradient':
