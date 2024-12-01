@@ -10,5 +10,6 @@
   },
   "eslint.validate": ["javascript", "typescript"],
   "eslint.nodePath": "./node_modules/eslint",
-  "css.lint.unknownAtRules": "ignore"
+  "css.lint.unknownAtRules": "ignore",
+  "tailwindCSS.rootFontSize": 10 // tailwind rem 계산식을 위해 설정 (px)
 }

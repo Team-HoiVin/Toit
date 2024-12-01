@@ -63,6 +63,17 @@ const config: Config = {
       fontFamily: {
         sans: ['var(--font-pretendard)', ...defaultTheme.fontFamily.sans],
       },
+      fontSize: {
+        xs: ['1.2rem', '1.4rem'],
+        sm: ['1.3rem', '1.6rem'],
+        base: ['1.4rem', '1.7rem'],
+        lg: ['1.6rem', '1.8rem'],
+        '2lg': ['1.8rem', '2.1rem'],
+        xl: ['2rem', '2.4rem'],
+        '2xl': ['2.4rem', '2.8rem'],
+        '3xl': ['3.2rem', '3.8rem'],
+        '4xl': ['4rem', '4.8rem'],
+      },
     },
   },
   plugins: [],

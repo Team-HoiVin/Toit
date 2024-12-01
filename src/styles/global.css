@@ -33,3 +33,7 @@
   --icon-inverse: #f8fafc;
   --icon-brand: #10b981;
 }
+
+html {
+  font-size: 10px;
+}
