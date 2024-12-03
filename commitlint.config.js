@@ -4,6 +4,11 @@ module.exports = {
   rules: {
     'body-leading-blank': [1, 'always'],
     'body-max-line-length': [2, 'always', 100],
+    'body-case': [
+      2,
+      'always',
+      ['lower-case', 'kebab-case', 'pascal-case', 'sentence-case'],
+    ],
     'footer-leading-blank': [1, 'always'],
     'footer-max-line-length': [2, 'always', 100],
     'header-max-length': [2, 'always', 100],
@@ -23,6 +28,7 @@ module.exports = {
         'docs',
         'feat',
         'fix',
+        'hotfix',
         'perf',
         'refactor',
         'revert',
