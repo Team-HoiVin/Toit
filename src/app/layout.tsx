@@ -2,10 +2,9 @@ import '@/styles/global.css';
 
 import React from 'react';
 
+import ReactQueryProvider from '@/provider/ReactQueryProvider';
 import type { Metadata, NextPage } from 'next';
 import localFont from 'next/font/local';
-
-import ReactQueryProvider from '@/components/provider/ReactQueryProvider';
 
 const pretendard = localFont({
   src: [
@@ -68,7 +67,7 @@ const RootLayout: NextPage<React.PropsWithChildren> = (props) => {
 
   return (
     <html lang='ko' className={`${pretendard.variable}`}>
-      <body>
+      <body className='text-base'>
         <ReactQueryProvider>{children}</ReactQueryProvider>
       </body>
     </html>

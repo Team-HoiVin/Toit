@@ -59,6 +59,7 @@ module.exports = {
         },
       },
     ],
+    '@typescript-eslint/consistent-type-imports': 'error',
     '@typescript-eslint/no-explicit-any': 0,
     '@typescript-eslint/no-empty-object-type': 0,
     '@typescript-eslint/no-unused-vars': [
