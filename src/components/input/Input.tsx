@@ -48,14 +48,8 @@ const Input = ({
     <>
       <div
         className={cn(
-          'relative rounded-[1.2rem] border border-solid border-border-primary bg-background-secondary px-[1.6rem]',
+          'relative',
           size === 'large' ? 'h-[44px] sm:h-[48px]' : 'h-[44px]',
-          error
-            ? 'border-status-danger'
-            : !disabled &&
-                'hover:border-interaction-hover focus:border-interaction-focus',
-          disabled && 'bg-background-tertiary',
-          password && (disabled ? 'pr-36' : 'pr-16'),
         )}
       >
         <input
@@ -63,8 +57,14 @@ const Input = ({
           placeholder={placeholder}
           disabled={disabled}
           className={cn(
-            'h-full w-full bg-inherit text-md text-text-primary outline-none placeholder:text-text-default sm:text-base',
+            'h-full w-full rounded-[1.2rem] border border-solid border-border-primary bg-background-secondary px-[1.6rem] text-md text-text-primary outline-none placeholder:text-text-default sm:text-base',
             size === 'small' && 'sm:text-md',
+            error
+              ? 'border-status-danger'
+              : !disabled &&
+                  'hover:border-interaction-hover focus:border-interaction-focus',
+            disabled && 'bg-background-tertiary',
+            password && (disabled ? 'pr-36' : 'pr-16'),
           )}
           {...rest}
         />
