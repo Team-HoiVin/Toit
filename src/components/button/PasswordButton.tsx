@@ -8,7 +8,7 @@ interface IPasswordButtonProps {
   disabled?: boolean;
 }
 
-const PASSWORD_ICON: Record<'true' | 'false', { src: string; alt: string }> = {
+const PASSWORD_ICON: Record<string, { src: string; alt: string }> = {
   true: {
     src: '/icons/visibility_off.svg',
     alt: '비밀번호 숨기기',
@@ -52,8 +52,8 @@ const PasswordButton = ({
           className='relative size-[2.4rem]'
         >
           <Image
-            src={PASSWORD_ICON[passwordState ? 'true' : 'false'].src}
-            alt={PASSWORD_ICON[passwordState ? 'true' : 'false'].alt}
+            src={PASSWORD_ICON[String(passwordState)].src}
+            alt={PASSWORD_ICON[String(passwordState)].alt}
             fill
             sizes='maxWidth:100%'
           />
