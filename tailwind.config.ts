@@ -59,6 +59,8 @@ const config: Config = {
       backgroundImage: {
         'brand-gradient':
           'linear-gradient(90deg, var(--brand-primary) 0%, var(--brand-tertiary) 100%)',
+        'background-gradient':
+          'linear-gradient(270deg, var(--background-secondary) 0%, var(--background-secondary) 62.05%, rgba(30, 41, 59, 0.00) 127.63%)',
       },
       fontFamily: {
         sans: ['var(--font-pretendard)', ...defaultTheme.fontFamily.sans],
@@ -66,8 +68,9 @@ const config: Config = {
       fontSize: {
         xs: ['1.2rem', '1.4rem'],
         sm: ['1.3rem', '1.6rem'],
-        base: ['1.4rem', '1.7rem'],
-        lg: ['1.6rem', '1.8rem'],
+        md: ['1.4rem', '1.7rem'],
+        base: ['1.6rem', '1.9rem'],
+        lg: ['1.6rem', '1.9rem'],
         '2lg': ['1.8rem', '2.1rem'],
         xl: ['2rem', '2.4rem'],
         '2xl': ['2.4rem', '2.8rem'],
