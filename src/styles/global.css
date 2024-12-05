@@ -39,30 +39,39 @@ html {
 }
 
 @layer components {
-  .btn-contained {
+  .btn-contain {
     @apply text-text-inverse;
     @apply disabled:bg-interaction-inactive;
   }
 
-  .btn-contained-primary {
+  .btn-contain-primary {
     @apply hover:bg-interaction-hover;
     @apply active:bg-interaction-pressed;
-    @apply btn-contained bg-brand-primary;
+    @apply btn-contain bg-brand-primary;
   }
 
-  .btn-contained-danger {
-    @apply btn-contained bg-status-danger;
+  .btn-contain-danger {
+    @apply btn-contain bg-status-danger;
   }
 
-  .btn-ghost {
-    @apply box-border border bg-white;
+  .btn-outline {
+    @apply box-border border;
     @apply disabled:border-interaction-inactive disabled:text-interaction-inactive;
   }
 
-  .btn-ghost-brand-primary {
+  .btn-outline-primary {
     @apply hover:border-interaction-hover hover:text-interaction-hover;
     @apply active:border-interaction-pressed active:text-interaction-pressed;
     @apply border-brand-primary text-brand-primary;
+    @apply btn-outline;
+  }
+
+  .btn-ghost {
+    @apply btn-outline bg-white;
+  }
+
+  .btn-ghost-brand-primary {
+    @apply btn-outline-primary;
     @apply btn-ghost;
   }
 
