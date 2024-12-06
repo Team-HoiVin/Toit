@@ -49,11 +49,7 @@ const Button = React.forwardRef(
         className={cn(
           'relative block rounded-[1.2rem] px-[1.25rem] font-semibold',
           size === 'large' ? 'h-[4.8rem]' : 'h-[3.2rem] text-md',
-          !pill
-            ? 'rounded-[1.2rem]'
-            : size === 'large'
-              ? 'rounded-[2.4rem]'
-              : 'rounded-[1.6rem]',
+          pill ? 'rounded-full' : 'rounded-[1.2rem]',
           disabled ? 'cursor-not-allowed' : '',
           buttonThemeClass,
           className,
