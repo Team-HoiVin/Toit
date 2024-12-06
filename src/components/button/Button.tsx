@@ -47,7 +47,7 @@ const Button = React.forwardRef(
         type={type || 'button'}
         disabled={disabled || isLoading}
         className={cn(
-          'relative block rounded-[1.2rem] px-[1.25rem] font-semibold',
+          'relative block px-[1.25rem] font-semibold',
           size === 'large' ? 'h-[4.8rem]' : 'h-[3.2rem] text-md',
           pill ? 'rounded-full' : 'rounded-[1.2rem]',
           disabled ? 'cursor-not-allowed' : '',
