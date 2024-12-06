@@ -53,7 +53,7 @@ const Button = React.forwardRef(
             ? 'rounded-[1.2rem]'
             : size === 'large'
               ? 'rounded-[2.4rem]'
-              : 'ounded-[1.6rem]',
+              : 'rounded-[1.6rem]',
           disabled ? 'cursor-not-allowed' : '',
           buttonThemeClass,
           className,
