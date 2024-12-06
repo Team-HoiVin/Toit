@@ -4,28 +4,32 @@ import React from 'react';
 
 import { motion } from 'framer-motion';
 
+import { cn } from '@/lib/cssMerge';
+
 interface ProgressIconProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   size?: number;
+  bgColor?: string;
 }
 
 /**
  * Progress Icon
  *
  * 커스텀하게 사용할 수 있는 원형 모양의 Progress Icon입니다.
- * @param {number} props.size - Progress Icon의 크기를 결정합니다. 기본값은 20입니다 * 단위 px 기준
+ * @param {number} props.size - Progress Icon의 크기를 결정합니다. 기본값은 16 입니다 * 단위 px 기준
+ * @param {string} props.bgColor - Progress Icon의 뒷 원형 배경색을 지정합니다. 기본 색상은 #ffffff 입니다.
  */
 
 const ProgressIcon = (props: ProgressIconProps) => {
-  const { size = 20 } = props;
-  const radius = size / 2;
+  const { size = 16, bgColor = '#ffffff', className } = props;
   const stroke = size / 10;
-  const round = radius - stroke / 2;
-  const offset = Math.round(2 * Math.PI * round);
+  const strokeWidth = stroke * 1.7; // 굵기 17px
+  const radius = size / 2;
+  const spinnerRadius = radius - strokeWidth / 2;
+  const spinnerCircumference = Math.round(2 * Math.PI * spinnerRadius);
 
   return (
     <motion.span
-      className='inline-block'
       animate={{
         rotate: [0, 360],
       }}
@@ -34,6 +38,7 @@ const ProgressIcon = (props: ProgressIconProps) => {
         duration: 1.4,
         ease: 'linear',
       }}
+      className={cn('inline-block text-brand-primary', className)}
       style={{
         width: `${size}px`,
         height: `${size}px`,
@@ -47,19 +52,30 @@ const ProgressIcon = (props: ProgressIconProps) => {
         <motion.circle
           cx={radius}
           cy={radius}
-          r={round}
-          stroke='currentColor'
+          r={spinnerRadius}
+          stroke={bgColor}
           fill='none'
-          strokeWidth={stroke}
-          strokeDasharray={offset}
-          strokeDashoffset={offset}
+          strokeWidth={strokeWidth}
+        />
+        <motion.circle
+          cx={radius}
+          cy={radius}
+          r={spinnerRadius}
+          stroke={'currentColor'}
+          fill='none'
+          strokeWidth={strokeWidth}
+          strokeDasharray={spinnerCircumference}
+          strokeDashoffset={spinnerCircumference}
           animate={{
-            strokeDashoffset: [offset, 0, -offset],
+            strokeDashoffset: [spinnerCircumference, 0, -spinnerCircumference],
           }}
           transition={{
             repeat: Infinity,
             duration: 1.4,
             ease: 'easeInOut',
+          }}
+          style={{
+            strokeLinecap: 'round',
           }}
         />
       </svg>

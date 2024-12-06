@@ -39,19 +39,19 @@ html {
 }
 
 @layer components {
-  .btn-contain {
+  .btn-container {
     @apply text-text-inverse;
     @apply disabled:bg-interaction-inactive;
   }
 
-  .btn-contain-primary {
+  .btn-container-primary {
     @apply hover:bg-interaction-hover;
     @apply active:bg-interaction-pressed;
-    @apply btn-contain bg-brand-primary;
+    @apply btn-container bg-brand-primary;
   }
 
-  .btn-contain-danger {
-    @apply btn-contain bg-status-danger;
+  .btn-container-danger {
+    @apply btn-container bg-status-danger;
   }
 
   .btn-outline {
@@ -70,7 +70,7 @@ html {
     @apply btn-outline bg-white;
   }
 
-  .btn-ghost-brand-primary {
+  .btn-ghost-primary {
     @apply btn-outline-primary;
     @apply btn-ghost;
   }

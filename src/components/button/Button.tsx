@@ -6,18 +6,16 @@ import { cn } from '@/lib/cssMerge';
 
 import ProgressIcon from '../icon/ProgressIcon';
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  size?: 'large' | 'small';
-  isLoading?: boolean;
-}
+import type { ButtonProps } from './types/button.type';
 
 /**
  * Button 공통 컴포넌트
  *
  * 공통 Button 컴포넌트 입니다.
- * @param {'large' | 'small'} props.size - Button의 크기를 결정합니다. 기본값은 large 입니다.
- * @param {boolean} props.isLoading - 버튼 로딩 상태 값입니다.
+ * @param {ButtonProps} props
+ * @param {string} props.size - Button의 크기를 결정합니다. 기본값은 large 입니다.
+ * @param {string} props.theme - Button의 전체적인 테마를 설정합니다.
+ * @param {boolean} [props.isLoading] - 버튼 로딩을 보여주는 상태 값입니다.
  */
 
 const Button = React.forwardRef(
