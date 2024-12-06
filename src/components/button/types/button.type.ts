@@ -8,7 +8,7 @@ export type ButtonThemeType =
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   size?: 'large' | 'small';
-  shape?: 'square' | 'round';
+  pill?: boolean;
   theme?: ButtonThemeType;
   startIcon?: string;
   endIcon?: string;
