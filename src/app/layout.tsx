@@ -67,7 +67,7 @@ const RootLayout: NextPage<React.PropsWithChildren> = (props) => {
 
   return (
     <html lang='ko' className={`${pretendard.variable}`}>
-      <body className='text-base'>
+      <body className='bg-background-primary text-base'>
         <ReactQueryProvider>{children}</ReactQueryProvider>
       </body>
     </html>
