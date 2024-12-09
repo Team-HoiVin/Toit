@@ -52,7 +52,7 @@ const Input = ({
           type={password ? (passwordOff ? 'password' : 'text') : type}
           disabled={disabled}
           className={cn(
-            'h-full w-full rounded-[1.2rem] border border-solid border-border-primary bg-background-secondary px-[1.6rem] text-md text-text-primary outline-none placeholder:text-text-default sm:text-base',
+            'h-full w-full rounded-[1.2rem] border border-solid border-border-primary/50 bg-background-secondary px-[1.6rem] text-md text-text-primary outline-none placeholder:text-text-default sm:text-base',
             size === 'small' && 'sm:text-md',
             error
               ? 'border-status-danger'
