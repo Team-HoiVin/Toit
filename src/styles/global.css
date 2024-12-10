@@ -79,4 +79,9 @@ html {
     @apply border-text-default text-text-default;
     @apply btn-ghost;
   }
+
+  .auth-divider::after,
+  .auth-divider::before {
+    @apply inline-block h-[1px] w-full bg-border-primary content-[''];
+  }
 }
