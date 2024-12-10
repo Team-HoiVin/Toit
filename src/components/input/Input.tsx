@@ -41,7 +41,7 @@ const Input = forwardRef(
     const [passwordOff, setPasswordOff] = useState(true);
 
     const handlePasswordState = () => {
-      setPasswordOff(!passwordOff);
+      setPasswordOff((prev) => !prev);
     };
 
     return (
