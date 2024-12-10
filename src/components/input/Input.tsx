@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { forwardRef, useState } from 'react';
 
 import { cn } from '@/lib/cssMerge';
 
@@ -8,7 +8,7 @@ import PasswordButton from '../button/PasswordButton';
 
 interface InputProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
-  size: 'large' | 'small';
+  size?: 'large' | 'small';
   error?: boolean;
   helperText?: string;
   password?: boolean;
@@ -25,15 +25,18 @@ interface InputProps
  * @param {boolean} [props.password] - 비밀번호 입력 필드로 설정합니다. `true`일 경우 비밀번호 숨기기/보기 토글 버튼이 활성화됩니다.
  */
 
-const Input = ({
-  type,
-  size,
-  error,
-  helperText,
-  disabled,
-  password,
-  ...rest
-}: InputProps) => {
+const Input = (
+  {
+    type,
+    size = 'large',
+    error,
+    helperText,
+    disabled,
+    password,
+    ...rest
+  }: InputProps,
+  ref: React.LegacyRef<HTMLInputElement>,
+) => {
   const [passwordOff, setPasswordOff] = useState(true);
 
   const handlePasswordState = () => {
@@ -41,7 +44,7 @@ const Input = ({
   };
 
   return (
-    <>
+    <div>
       <div
         className={cn(
           'relative',
@@ -49,6 +52,7 @@ const Input = ({
         )}
       >
         <input
+          ref={ref}
           type={password ? (passwordOff ? 'password' : 'text') : type}
           disabled={disabled}
           className={cn(
@@ -76,8 +80,8 @@ const Input = ({
           {helperText}
         </div>
       )}
-    </>
+    </div>
   );
 };
 
-export default Input;
+export default forwardRef(Input);
