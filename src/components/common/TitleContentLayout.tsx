@@ -17,9 +17,9 @@ const TitleContentLayout = ({ title, children }: TitleContentLayoutProps) => {
     <section className='mx-auto min-h-[calc(100dvh-60px)] w-full max-w-[460px] px-[1.6rem]'>
       <div className='py-[2.4rem] sm:py-40 lg:py-56'>
         <div className='grid gap-[2.4rem] sm:gap-32'>
-          <h1 className='break-keep text-center text-2xl font-medium text-text-primary lg:text-4xl'>
+          <h2 className='break-keep text-center text-2xl font-medium text-text-primary lg:text-4xl'>
             {title}
-          </h1>
+          </h2>
           <div>{children}</div>
         </div>
       </div>

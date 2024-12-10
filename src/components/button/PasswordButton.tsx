@@ -54,6 +54,7 @@ const PasswordButton = ({
           <Image
             src={PASSWORD_ICON[String(passwordState)].src}
             alt={PASSWORD_ICON[String(passwordState)].alt}
+            priority
             fill
             sizes='maxWidth:100%'
           />
