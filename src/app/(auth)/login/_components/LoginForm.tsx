@@ -11,6 +11,7 @@ import FormLabel from '@/components/form/FormLabel';
 import Input from '@/components/input/Input';
 
 import type { ILogin, ILoginSubmit } from '../_types/login.interface';
+import { EMAIL_PATTERN } from '../../_constants/validationPatterns';
 
 const LoginForm = ({ onSubmit }: ILoginSubmit) => {
   const {
@@ -37,7 +38,7 @@ const LoginForm = ({ onSubmit }: ILoginSubmit) => {
             {...register('email', {
               required: '이메일은 필수 입력입니다.',
               pattern: {
-                value: /\S+@\S+\.\S+/,
+                value: EMAIL_PATTERN,
                 message: '이메일 형식으로 작성해 주세요.',
               },
             })}

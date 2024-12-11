@@ -4,7 +4,7 @@ import SocialLogin from '../_components/SocialLogin';
 
 import LoginSection from './_components/LoginSection';
 
-const page = () => {
+const LoginPage = () => {
   return (
     <TitleContentLayout title='로그인'>
       <LoginSection />
@@ -13,4 +13,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default LoginPage;

@@ -10,6 +10,10 @@ import FormLabel from '@/components/form/FormLabel';
 import Input from '@/components/input/Input';
 
 import type { ISignup } from '../_types/signup.interface';
+import {
+  EMAIL_PATTERN,
+  PASSWORD_PATTERN,
+} from '../../_constants/validationPatterns';
 
 const SignupForm = () => {
   const {
@@ -72,7 +76,7 @@ const SignupForm = () => {
             {...register('email', {
               required: '이메일은 필수 입력입니다.',
               pattern: {
-                value: /\S+@\S+\.\S+/,
+                value: EMAIL_PATTERN,
                 message: '이메일 형식으로 작성해 주세요.',
               },
             })}
@@ -94,7 +98,7 @@ const SignupForm = () => {
                 message: '비밀번호는 최소 8자 이상입니다.',
               },
               pattern: {
-                value: /^[a-zA-Z0-9!@#$%^&*]+$/,
+                value: PASSWORD_PATTERN,
                 message:
                   '비밀번호는 숫자, 영문, 특수문자(!@#$%^&*)로만 가능합니다.',
               },

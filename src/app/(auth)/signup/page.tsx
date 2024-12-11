@@ -4,7 +4,7 @@ import SocialLogin from '../_components/SocialLogin';
 
 import SignupForm from './_components/SignupForm';
 
-const page = () => {
+const SignUpPage = () => {
   return (
     <TitleContentLayout title='회원가입'>
       <div className='grid gap-[2.4rem] lg:gap-[4.8rem]'>
@@ -15,4 +15,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default SignUpPage;
