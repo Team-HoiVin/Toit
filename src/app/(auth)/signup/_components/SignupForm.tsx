@@ -65,6 +65,7 @@ const SignupForm = () => {
           <FormLabel htmlFor={emailId}>이메일</FormLabel>
           <Input
             id={emailId}
+            type='email'
             placeholder='이메일을 입력해 주세요.'
             error={Boolean(errors.email)}
             helperText={errors.email?.message}

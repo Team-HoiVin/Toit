@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface IQuickAuth {
   title: string;
@@ -40,7 +41,7 @@ const SocialLogin = ({ title }: IQuickAuth) => {
         <ul className='flex gap-[1.6rem]'>
           {ICONS.map((icon, idx) => (
             <li key={idx} className='relative size-[42px]'>
-              <a href={icon.href} className='flex'>
+              <Link href={icon.href} className='flex'>
                 <Image
                   src={icon.src}
                   alt={icon.alt}
@@ -48,7 +49,7 @@ const SocialLogin = ({ title }: IQuickAuth) => {
                   priority
                   sizes='maxWidth:100%'
                 />
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
