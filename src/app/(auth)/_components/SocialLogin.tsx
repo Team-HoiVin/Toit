@@ -27,7 +27,7 @@ const ICONS = [
  * @TODO 간편 회원가입 및 로그인 로직 추가 필요
  */
 
-const QuickAuth = ({ title }: IQuickAuth) => {
+const SocialLogin = ({ title }: IQuickAuth) => {
   return (
     <div className='grid gap-[1.6rem]'>
       <div>
@@ -57,4 +57,4 @@ const QuickAuth = ({ title }: IQuickAuth) => {
   );
 };
 
-export default QuickAuth;
+export default SocialLogin;
