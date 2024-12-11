@@ -40,8 +40,8 @@ const SocialLogin = ({ title }: IQuickAuth) => {
         <p className='font-medium text-white'>{title}</p>
         <ul className='flex gap-[1.6rem]'>
           {ICONS.map((icon, idx) => (
-            <li key={idx} className='relative size-[42px]'>
-              <Link href={icon.href} className='flex'>
+            <li key={idx} className='size-[42px]'>
+              <Link href={icon.href} className='relative flex size-full'>
                 <Image
                   src={icon.src}
                   alt={icon.alt}

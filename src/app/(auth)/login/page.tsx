@@ -2,12 +2,12 @@ import TitleContentLayout from '@/components/common/TitleContentLayout';
 
 import SocialLogin from '../_components/SocialLogin';
 
-import LoginForm from './_components/LoginForm';
+import LoginSection from './_components/LoginSection';
 
 const page = () => {
   return (
     <TitleContentLayout title='로그인'>
-      <LoginForm />
+      <LoginSection />
       <SocialLogin title='간편 로그인하기' />
     </TitleContentLayout>
   );
