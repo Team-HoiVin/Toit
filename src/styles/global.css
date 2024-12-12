@@ -21,7 +21,7 @@
   --interaction-hover: #059669;
   --interaction-pressed: #047857;
   --interaction-focus: #10b981;
-  --border-primary: #f8fafc50;
+  --border-primary: 248, 250, 252;
   --text-primary: #f8fafc;
   --text-secondary: #cbd5e1;
   --text-tertiary: #e2e8f0;
@@ -36,6 +36,29 @@
 
 html {
   font-size: 62.5%;
+}
+
+@supports (scrollbar-width: auto) {
+  * {
+    scrollbar-color: var(--background-tertiary) var(--background-primary);
+  }
+}
+
+@layer base {
+  .landing-border-gradient {
+    border: 1px solid transparent;
+    background-image: linear-gradient(
+        var(--background-primary),
+        var(--background-primary)
+      ),
+      linear-gradient(
+        90deg,
+        var(--brand-primary) 0%,
+        var(--brand-tertiary) 100%
+      );
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+  }
 }
 
 @layer components {

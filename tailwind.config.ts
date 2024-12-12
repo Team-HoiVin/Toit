@@ -37,7 +37,7 @@ const config: Config = {
           focus: 'var(--interaction-focus)',
         },
         border: {
-          primary: 'var(--border-primary)',
+          primary: 'rgba(var(--border-primary), <alpha-value>)',
         },
         text: {
           primary: 'var(--text-primary)',
@@ -61,6 +61,17 @@ const config: Config = {
           'linear-gradient(90deg, var(--brand-primary) 0%, var(--brand-tertiary) 100%)',
         'background-gradient':
           'linear-gradient(270deg, var(--background-secondary) 0%, var(--background-secondary) 62.05%, rgba(30, 41, 59, 0.00) 127.63%)',
+        'landig-intro-large-img': "url('/images/landing/intro-large-bg.png')",
+        'landig-intro-medium-img': "url('/images/landing/intro-medium-bg.png')",
+        'landig-intro-small-img': "url('/images/landing/intro-small-bg.png')",
+        'landig-bottom-large-img': "url('/images/landing/bottom-large-bg.png')",
+        'landig-bottom-medium-img':
+          "url('/images/landing/bottom-medium-bg.png')",
+        'landig-bottom-small-img': "url('/images/landing/bottom-small-bg.png')",
+      },
+      boxShadow: {
+        light: '0px 0px 12px 2px rgba(255, 255, 255, 0.25)',
+        dark: '0px 0px 12px 2px rgba(0, 0, 0, 0.25)',
       },
       fontFamily: {
         sans: ['var(--font-pretendard)', ...defaultTheme.fontFamily.sans],
@@ -76,6 +87,8 @@ const config: Config = {
         '2xl': ['2.4rem', '2.8rem'],
         '3xl': ['3.2rem', '3.8rem'],
         '4xl': ['4rem', '4.8rem'],
+        '5xl': ['4.8rem', '5.7rem'],
+        '6xl': ['6.4rem', '7.6rem'],
       },
     },
   },
