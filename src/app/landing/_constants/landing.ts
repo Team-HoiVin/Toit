@@ -1,20 +1,7 @@
-interface LandingFeature {
-  id: number;
-  image: {
-    src: string;
-    alt: string;
-  };
-  icon: {
-    src: string;
-    alt: string;
-  };
-  description: string;
-  reverse?: boolean;
-}
+import type { LandingFeature } from '../_types/landing.type';
 
 export const LANDING_FEATURES: LandingFeature[] = [
   {
-    id: 1,
     image: {
       src: '/images/landing/info-1.png',
       alt: 'info-1',
@@ -26,7 +13,6 @@ export const LANDING_FEATURES: LandingFeature[] = [
     description: '그룹으로\n할 일을 관리해요',
   },
   {
-    id: 2,
     image: {
       src: '/images/landing/info-2.png',
       alt: 'info-2',
@@ -39,7 +25,6 @@ export const LANDING_FEATURES: LandingFeature[] = [
     reverse: true,
   },
   {
-    id: 3,
     image: {
       src: '/images/landing/info-3.png',
       alt: 'info-3',

@@ -4,19 +4,15 @@ import Image from 'next/image';
 
 import { cn } from '@/lib/cssMerge';
 
-interface FeatureCardProps {
-  image: {
-    src: string;
-    alt: string;
-  };
-  icon: {
-    src: string;
-    alt: string;
-  };
-  description: string;
-  reverse?: boolean;
-  isFirst?: boolean;
-}
+import type { LandingFeature } from '../_types/landing.type';
+
+/**
+ * FeatureCard
+ *
+ * 랜딩페이지에서 중단부 카드를 랜더링하는 컴포넌트입니다.
+ *
+ * @param {LandingFeature} props
+ */
 
 const FeatureCard = ({
   image,
@@ -24,7 +20,7 @@ const FeatureCard = ({
   description,
   reverse,
   isFirst,
-}: FeatureCardProps) => {
+}: LandingFeature) => {
   return (
     <li
       className={cn(

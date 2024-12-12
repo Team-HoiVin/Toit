@@ -28,7 +28,7 @@ const LandingPage = () => {
         <ul className='m-auto box-content grid max-w-[99.6rem] gap-[8rem] p-[2.4rem]'>
           {LANDING_FEATURES.map((feature, index) => (
             <FeatureCard
-              key={feature.id}
+              key={index}
               image={feature.image}
               icon={feature.icon}
               description={feature.description}
