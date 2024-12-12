@@ -45,7 +45,7 @@ html {
 }
 
 @layer base {
-  .randing-border-gradient {
+  .landing-border-gradient {
     border: 1px solid transparent;
     background-image: linear-gradient(
         var(--background-primary),
