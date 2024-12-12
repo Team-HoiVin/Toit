@@ -41,6 +41,7 @@ const FeatureCard = ({
           alt={image.alt}
           fill
           className='object-contain'
+          sizes='max-width:24px'
         />
       </div>
       <div
