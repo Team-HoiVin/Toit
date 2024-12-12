@@ -1,4 +1,4 @@
-export interface LandingFeature {
+export interface LandingFeature extends React.LiHTMLAttributes<HTMLLIElement> {
   image: {
     src: string;
     alt: string;
@@ -9,5 +9,5 @@ export interface LandingFeature {
   };
   description: string;
   reverse?: boolean;
-  isFirst?: boolean;
+  imageBottom?: boolean;
 }

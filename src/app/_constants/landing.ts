@@ -7,10 +7,12 @@ export const LANDING_FEATURES: LandingFeature[] = [
       alt: 'info-1',
     },
     icon: {
-      src: '/images/icon/folder.svg',
+      src: '/icons/folder.svg',
       alt: 'folder',
     },
     description: '그룹으로\n할 일을 관리해요',
+    className: 'landing-border-gradient shadow-light backdrop-blur-[0.6rem]',
+    imageBottom: true,
   },
   {
     image: {
@@ -18,11 +20,12 @@ export const LANDING_FEATURES: LandingFeature[] = [
       alt: 'info-2',
     },
     icon: {
-      src: '/images/icon/message.svg',
+      src: '/icons/message.svg',
       alt: 'message',
     },
     description: '간단하게 맴버들을\n초대해요',
     reverse: true,
+    className: 'border border-border-primary/10 bg-background-secondary',
   },
   {
     image: {
@@ -30,9 +33,10 @@ export const LANDING_FEATURES: LandingFeature[] = [
       alt: 'info-3',
     },
     icon: {
-      src: '/images/icon/done.svg',
+      src: '/icons/done.svg',
       alt: 'done',
     },
     description: '할 일도 간편하게\n체크해요',
+    className: 'bg-slate-950',
   },
 ];

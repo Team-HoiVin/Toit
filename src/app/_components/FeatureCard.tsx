@@ -19,25 +19,31 @@ const FeatureCard = ({
   icon,
   description,
   reverse,
-  isFirst,
+  imageBottom,
+  className,
+  ...rest
 }: LandingFeature) => {
   return (
     <li
       className={cn(
         'flex aspect-[996/419] items-start justify-center gap-[6.7rem] rounded-[4rem]',
         reverse && 'flex-row-reverse',
-        isFirst
-          ? 'landing-border-gradient shadow-light backdrop-blur-[0.6rem]'
-          : 'border border-border-primary/10 bg-background-secondary',
+        className,
       )}
+      {...rest}
     >
-      <div className='relative aspect-[291/338] w-full max-w-[29.1rem]'>
+      <div
+        className={cn(
+          'relative aspect-[291/338] w-full max-w-[29.1rem]',
+          imageBottom && 'self-end',
+        )}
+      >
         <Image
           src={image.src}
           alt={image.alt}
           fill
           className='object-contain'
-          sizes='max-width:24px'
+          sizes='max-width:29.1rem'
         />
       </div>
       <div

@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Image from 'next/image';
+
 import Button from '@/components/button/Button';
 
 import FeatureCard from './_components/FeatureCard';
@@ -10,8 +12,16 @@ const LandingPage = () => {
     <>
       <section className='flex aspect-[1920/1080] flex-col justify-between bg-landig-intro-large-img bg-contain bg-top bg-no-repeat pb-[12rem] pt-[8.4rem]'>
         <div className='text-center'>
-          <h2 className='mb-8 text-5xl font-semibold'>
-            함께 만들어가는 투두리스트
+          <h2 className='mb-8 flex items-center justify-center text-5xl font-semibold'>
+            <span>함께 만들어가는 투두 리스트</span>
+            <div className='relative ml-[2.4rem] size-[5.6rem]'>
+              <Image
+                src={'/icons/repair.svg'}
+                alt='repair'
+                fill
+                className='ob'
+              />
+            </div>
           </h2>
           <p className='inline-block bg-brand-gradient bg-clip-text text-6xl font-semibold text-transparent'>
             TOIT
@@ -33,7 +43,8 @@ const LandingPage = () => {
               icon={feature.icon}
               description={feature.description}
               reverse={feature.reverse}
-              isFirst={index === 0}
+              imageBottom={feature.imageBottom}
+              className={feature.className}
             />
           ))}
         </ul>
