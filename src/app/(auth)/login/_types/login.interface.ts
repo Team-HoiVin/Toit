@@ -8,3 +8,17 @@ export interface ILogin {
 export interface ILoginSubmit {
   onSubmit: SubmitHandler<ILogin>;
 }
+
+export interface ILoginResponse {
+  user: {
+    id: number;
+    nickname: string;
+    createdAt: string;
+    updatedAt: string;
+    image?: null;
+    teamId: string;
+    email: string;
+  };
+  accessToken: string;
+  refreshToken: string;
+}
