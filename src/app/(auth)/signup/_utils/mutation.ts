@@ -1,6 +1,7 @@
 'use client';
 
-import type { ISignup, ISignUpResponse } from '../_types/signup.interface';
+import type { ISignup } from '../_types/signup.interface';
+import type { ILoginResponse } from '../../login/_types/login.interface';
 
 export const signUpMutationFn = async (data: ISignup) => {
   const res = await fetch('/auth/signUp', {
@@ -11,7 +12,7 @@ export const signUpMutationFn = async (data: ISignup) => {
     body: JSON.stringify(data),
   });
 
-  const result: ISignUpResponse = await res.json();
+  const result: ILoginResponse = await res.json();
 
   return result;
 };
