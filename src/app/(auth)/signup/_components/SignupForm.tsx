@@ -4,16 +4,22 @@ import { useId } from 'react';
 import type { SubmitHandler } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
 
+import { useMutation } from '@tanstack/react-query';
+import Cookies from 'universal-cookie';
+
 import Button from '@/components/button/Button';
 import FormControl from '@/components/form/FormControl';
 import FormLabel from '@/components/form/FormLabel';
 import Input from '@/components/input/Input';
 
 import type { ISignup } from '../_types/signup.interface';
+import { signUpMutationFn } from '../_utils/mutation';
 import {
   EMAIL_PATTERN,
   PASSWORD_PATTERN,
 } from '../../_constants/validationPatterns';
+
+const cookies = new Cookies();
 
 const SignupForm = () => {
   const {
@@ -32,16 +38,22 @@ const SignupForm = () => {
   const passwordValue = watch('password');
   const passwordConfirmValue = watch('passwordConfirmation');
 
+  const signUpMutation = useMutation({
+    mutationFn: signUpMutationFn,
+    onSuccess: (res) => {
+      cookies.set('accessToken', res.accessToken);
+      cookies.set('refreshToken', res.refreshToken);
+    },
+  });
+
   const validateMatchingPasswords = () => {
     if (passwordConfirmValue) {
       trigger(['password', 'passwordConfirmation']);
     }
   };
 
-  const onSubmit: SubmitHandler<ISignup> = () => {
-    /**
-     * @TODO 회원가입 로직 작성
-     */
+  const onSubmit: SubmitHandler<ISignup> = (data: ISignup) => {
+    signUpMutation.mutate(data);
   };
 
   return (
