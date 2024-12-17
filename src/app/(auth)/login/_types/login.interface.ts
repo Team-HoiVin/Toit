@@ -1,12 +1,6 @@
-import type { SubmitHandler } from 'react-hook-form';
-
 export interface ILogin {
   email: string;
   password: string;
-}
-
-export interface ILoginSubmit {
-  onSubmit: SubmitHandler<ILogin>;
 }
 
 export interface ILoginResponse {
@@ -21,4 +15,13 @@ export interface ILoginResponse {
   };
   accessToken: string;
   refreshToken: string;
+}
+
+export interface IErrorResponse {
+  details: {
+    [key in keyof ILogin]: {
+      message: string;
+    };
+  };
+  message: string;
 }

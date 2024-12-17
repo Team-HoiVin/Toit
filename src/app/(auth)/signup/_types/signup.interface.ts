@@ -4,3 +4,12 @@ export interface ISignup {
   password: string;
   passwordConfirmation: string;
 }
+
+export interface IErrorResponse {
+  details: {
+    [key in keyof ISignup]: {
+      message: string;
+    };
+  };
+  message: string;
+}

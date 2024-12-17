@@ -5,6 +5,7 @@ import type { SubmitHandler } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
 
 import { useMutation } from '@tanstack/react-query';
+import { useRouter } from 'next/navigation';
 import Cookies from 'universal-cookie';
 
 import Button from '@/components/button/Button';
@@ -12,7 +13,7 @@ import FormControl from '@/components/form/FormControl';
 import FormLabel from '@/components/form/FormLabel';
 import Input from '@/components/input/Input';
 
-import type { ISignup } from '../_types/signup.interface';
+import type { IErrorResponse, ISignup } from '../_types/signup.interface';
 import { signUpMutationFn } from '../_utils/mutation';
 import {
   EMAIL_PATTERN,
@@ -22,12 +23,14 @@ import {
 const cookies = new Cookies();
 
 const SignupForm = () => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
+    setError,
     watch,
     trigger,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm<ISignup>({ mode: 'onChange' });
 
   const nicknameId = useId();
@@ -43,6 +46,16 @@ const SignupForm = () => {
     onSuccess: (res) => {
       cookies.set('accessToken', res.accessToken);
       cookies.set('refreshToken', res.refreshToken);
+      router.push('/');
+    },
+    onError: (error: IErrorResponse) => {
+      console.error('Failed to Sign Up', error);
+
+      const errorKeys = Object.keys(error.details) as Array<
+        keyof typeof error.details
+      >;
+
+      setError(errorKeys[0], { message: error.message });
     },
   });
 
@@ -136,7 +149,13 @@ const SignupForm = () => {
           />
         </FormControl>
       </div>
-      <Button type='submit'>회원가입</Button>
+      <Button
+        type='submit'
+        disabled={!isValid}
+        isLoading={signUpMutation.isPending}
+      >
+        회원가입
+      </Button>
     </form>
   );
 };
