@@ -9,9 +9,6 @@ import type {
 export const loginMutationFn = async (data: ILogin) => {
   const res = await fetch('/api/auth/signIn', {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
     body: JSON.stringify(data),
   });
 
