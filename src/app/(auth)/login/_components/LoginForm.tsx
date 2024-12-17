@@ -1,19 +1,28 @@
 'use client';
 
 import { useId } from 'react';
+import type { SubmitHandler } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
 
+import { useMutation } from '@tanstack/react-query';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import Cookies from 'universal-cookie';
 
 import Button from '@/components/button/Button';
 import FormControl from '@/components/form/FormControl';
 import FormLabel from '@/components/form/FormLabel';
 import Input from '@/components/input/Input';
 
-import type { ILogin, ILoginSubmit } from '../_types/login.interface';
+import type { ILogin } from '../_types/login.interface';
+import { loginMutationFn } from '../_utils/mutation';
 import { EMAIL_PATTERN } from '../../_constants/validationPatterns';
 
-const LoginForm = ({ onSubmit }: ILoginSubmit) => {
+const cookies = new Cookies();
+
+const LoginForm = () => {
+  const router = useRouter();
+
   const {
     register,
     handleSubmit,
@@ -23,8 +32,24 @@ const LoginForm = ({ onSubmit }: ILoginSubmit) => {
   const emailId = useId();
   const passwordId = useId();
 
+  const loginMutation = useMutation({
+    mutationFn: loginMutationFn,
+    onSuccess: (res) => {
+      cookies.set('accessToken', res.accessToken);
+      cookies.set('refreshToken', res.refreshToken);
+      router.push('/');
+    },
+    onError: (error) => {
+      console.error('Failed to login', error);
+    },
+  });
+
+  const handleLogin: SubmitHandler<ILogin> = (data: ILogin) => {
+    loginMutation.mutate(data);
+  };
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(handleLogin)}>
       <div className='grid gap-[2.4rem]'>
         {/* email field */}
         <FormControl>
@@ -64,7 +89,12 @@ const LoginForm = ({ onSubmit }: ILoginSubmit) => {
           비밀번호를 잊으셨나요?
         </Link>
       </p>
-      <Button type='submit' disabled={!isValid} className='mt-16 w-full'>
+      <Button
+        type='submit'
+        disabled={!isValid}
+        isLoading={loginMutation.isPending}
+        className='mt-16 w-full'
+      >
         로그인
       </Button>
     </form>
