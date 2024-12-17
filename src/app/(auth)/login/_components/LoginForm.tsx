@@ -17,7 +17,7 @@ const LoginForm = ({ onSubmit }: ILoginSubmit) => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm<ILogin>({ mode: 'onChange' });
 
   const emailId = useId();
@@ -64,7 +64,7 @@ const LoginForm = ({ onSubmit }: ILoginSubmit) => {
           비밀번호를 잊으셨나요?
         </Link>
       </p>
-      <Button type='submit' className='mt-16 w-full'>
+      <Button type='submit' disabled={!isValid} className='mt-16 w-full'>
         로그인
       </Button>
     </form>

@@ -27,7 +27,7 @@ const SignupForm = () => {
     handleSubmit,
     watch,
     trigger,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm<ISignup>({ mode: 'onChange' });
 
   const nicknameId = useId();
@@ -136,7 +136,9 @@ const SignupForm = () => {
           />
         </FormControl>
       </div>
-      <Button type='submit'>회원가입</Button>
+      <Button type='submit' disabled={!isValid}>
+        회원가입
+      </Button>
     </form>
   );
 };
