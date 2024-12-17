@@ -14,7 +14,7 @@ import FormControl from '@/components/form/FormControl';
 import FormLabel from '@/components/form/FormLabel';
 import Input from '@/components/input/Input';
 
-import type { ILogin } from '../_types/login.interface';
+import type { IErrorResponse, ILogin } from '../_types/login.interface';
 import { loginMutationFn } from '../_utils/mutation';
 import { EMAIL_PATTERN } from '../../_constants/validationPatterns';
 
@@ -26,6 +26,7 @@ const LoginForm = () => {
   const {
     register,
     handleSubmit,
+    setError,
     formState: { errors, isValid },
   } = useForm<ILogin>({ mode: 'onChange' });
 
@@ -39,8 +40,14 @@ const LoginForm = () => {
       cookies.set('refreshToken', res.refreshToken);
       router.push('/');
     },
-    onError: (error) => {
+    onError: (error: IErrorResponse) => {
       console.error('Failed to login', error);
+
+      const errorKeys = Object.keys(error.details) as Array<
+        keyof typeof error.details
+      >;
+
+      setError(errorKeys[0], { message: error.message });
     },
   });
 

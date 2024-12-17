@@ -16,3 +16,14 @@ export interface ILoginResponse {
   accessToken: string;
   refreshToken: string;
 }
+
+type ErrorKeys = 'email' | 'password';
+
+export interface IErrorResponse {
+  details: {
+    [key in ErrorKeys]: {
+      message: string;
+    };
+  };
+  message: string;
+}

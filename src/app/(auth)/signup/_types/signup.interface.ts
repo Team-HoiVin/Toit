@@ -4,3 +4,14 @@ export interface ISignup {
   password: string;
   passwordConfirmation: string;
 }
+
+type ErrorKeys = 'email' | 'nickname' | 'password';
+
+export interface IErrorResponse {
+  details: {
+    [key in ErrorKeys]: {
+      message: string;
+    };
+  };
+  message: string;
+}

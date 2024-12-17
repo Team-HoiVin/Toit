@@ -13,7 +13,7 @@ import FormControl from '@/components/form/FormControl';
 import FormLabel from '@/components/form/FormLabel';
 import Input from '@/components/input/Input';
 
-import type { ISignup } from '../_types/signup.interface';
+import type { IErrorResponse, ISignup } from '../_types/signup.interface';
 import { signUpMutationFn } from '../_utils/mutation';
 import {
   EMAIL_PATTERN,
@@ -27,6 +27,7 @@ const SignupForm = () => {
   const {
     register,
     handleSubmit,
+    setError,
     watch,
     trigger,
     formState: { errors, isValid },
@@ -47,8 +48,14 @@ const SignupForm = () => {
       cookies.set('refreshToken', res.refreshToken);
       router.push('/');
     },
-    onError: (error) => {
+    onError: (error: IErrorResponse) => {
       console.error('Failed to Sign Up', error);
+
+      const errorKeys = Object.keys(error.details) as Array<
+        keyof typeof error.details
+      >;
+
+      setError(errorKeys[0], { message: error.message });
     },
   });
 

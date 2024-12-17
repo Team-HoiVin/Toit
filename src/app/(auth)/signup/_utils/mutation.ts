@@ -1,6 +1,6 @@
 'use client';
 
-import type { ISignup } from '../_types/signup.interface';
+import type { IErrorResponse, ISignup } from '../_types/signup.interface';
 import type { ILoginResponse } from '../../login/_types/login.interface';
 
 export const signUpMutationFn = async (data: ISignup) => {
@@ -12,11 +12,11 @@ export const signUpMutationFn = async (data: ISignup) => {
     body: JSON.stringify(data),
   });
 
-  const result: ILoginResponse = await res.json();
+  const result = await res.json();
 
   if (!res.ok) {
-    throw result;
+    throw result as IErrorResponse;
   }
 
-  return result;
+  return result as ILoginResponse;
 };
