@@ -1,6 +1,6 @@
 'use client';
 
-import type { ILogin } from '../_types/login.interface';
+import type { ILogin, ILoginResponse } from '../_types/login.interface';
 
 export const loginMutationFn = async (data: ILogin) => {
   const res = await fetch('/auth/signIn', {
@@ -11,7 +11,7 @@ export const loginMutationFn = async (data: ILogin) => {
     body: JSON.stringify(data),
   });
 
-  const result = await res.json();
+  const result: ILoginResponse = await res.json();
 
   if (!res.ok) {
     throw result;

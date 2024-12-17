@@ -14,5 +14,9 @@ export const signUpMutationFn = async (data: ISignup) => {
 
   const result: ILoginResponse = await res.json();
 
+  if (!res.ok) {
+    throw result;
+  }
+
   return result;
 };

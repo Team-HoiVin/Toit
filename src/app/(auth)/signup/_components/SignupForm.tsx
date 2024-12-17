@@ -5,6 +5,7 @@ import type { SubmitHandler } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
 
 import { useMutation } from '@tanstack/react-query';
+import { useRouter } from 'next/navigation';
 import Cookies from 'universal-cookie';
 
 import Button from '@/components/button/Button';
@@ -22,6 +23,7 @@ import {
 const cookies = new Cookies();
 
 const SignupForm = () => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -43,6 +45,10 @@ const SignupForm = () => {
     onSuccess: (res) => {
       cookies.set('accessToken', res.accessToken);
       cookies.set('refreshToken', res.refreshToken);
+      router.push('/');
+    },
+    onError: (error) => {
+      console.error('Failed to Sign Up', error);
     },
   });
 
@@ -136,7 +142,11 @@ const SignupForm = () => {
           />
         </FormControl>
       </div>
-      <Button type='submit' disabled={!isValid}>
+      <Button
+        type='submit'
+        disabled={!isValid}
+        isLoading={signUpMutation.isPending}
+      >
         회원가입
       </Button>
     </form>
