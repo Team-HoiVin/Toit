@@ -17,11 +17,9 @@ export interface ILoginResponse {
   refreshToken: string;
 }
 
-type ErrorKeys = 'email' | 'password';
-
 export interface IErrorResponse {
   details: {
-    [key in ErrorKeys]: {
+    [key in keyof ILogin]: {
       message: string;
     };
   };

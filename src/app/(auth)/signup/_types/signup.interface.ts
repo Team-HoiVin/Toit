@@ -5,11 +5,9 @@ export interface ISignup {
   passwordConfirmation: string;
 }
 
-type ErrorKeys = 'email' | 'nickname' | 'password';
-
 export interface IErrorResponse {
   details: {
-    [key in ErrorKeys]: {
+    [key in keyof ISignup]: {
       message: string;
     };
   };
