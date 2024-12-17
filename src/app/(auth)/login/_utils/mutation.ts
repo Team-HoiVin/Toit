@@ -3,7 +3,7 @@
 import type { ILogin } from '../_types/login.interface';
 
 export const loginMutationFn = async (data: ILogin) => {
-  const res = await fetch('/auth/signIn', {
+  const res = await fetch('/api/auth/signIn', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
