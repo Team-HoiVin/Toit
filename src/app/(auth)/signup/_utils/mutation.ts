@@ -4,7 +4,7 @@ import type { IErrorResponse, ISignup } from '../_types/signup.interface';
 import type { ILoginResponse } from '../../login/_types/login.interface';
 
 export const signUpMutationFn = async (data: ISignup) => {
-  const res = await fetch('/auth/signUp', {
+  const res = await fetch('/api/auth/signUp', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
