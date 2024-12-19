@@ -1,5 +1,7 @@
 import { useEffect, useState, type PropsWithChildren } from 'react';
 
+import Image from 'next/image';
+
 import { cn } from '@/lib/cssMerge';
 
 import Portal from './Portal';
@@ -7,9 +9,10 @@ import Portal from './Portal';
 interface IModal extends PropsWithChildren {
   active: boolean;
   onClose: () => void;
+  closeButton?: boolean;
 }
 
-const Modal = ({ active, children, onClose }: IModal) => {
+const Modal = ({ active, children, onClose, closeButton }: IModal) => {
   const [visible, setVisible] = useState<boolean>(active);
 
   useEffect(() => {
@@ -49,6 +52,14 @@ const Modal = ({ active, children, onClose }: IModal) => {
                 : 'animate-slide-down sm:animate-fade-out',
             )}
           >
+            {closeButton && (
+              <button
+                className='relative ml-auto flex size-[2.4rem]'
+                onClick={onClose}
+              >
+                <Image src={'icons/x.svg'} alt='닫기' fill />
+              </button>
+            )}
             {children}
           </div>
         </div>
