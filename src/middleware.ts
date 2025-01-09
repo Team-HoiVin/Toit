@@ -12,6 +12,7 @@ export function middleware(request: NextRequest) {
     }
 
     const { pathname } = request.nextUrl;
+    const accessToken = request.cookies.get('accessToken');
 
     // API 요청 설정
     if (pathname.startsWith('/api/')) {
@@ -19,8 +20,6 @@ export function middleware(request: NextRequest) {
 
       // 새로운 요청 URL 생성
       const apiUrl = new URL(`${process.env.API_URL}${newPath}`);
-
-      const accessToken = request.cookies.get('accessToken');
 
       // rewrite 응답 생성
       const response = NextResponse.rewrite(apiUrl, {
@@ -32,9 +31,38 @@ export function middleware(request: NextRequest) {
       });
 
       return response;
-    }
+    } else {
+      /**
+       * route group으로 묶어서 처리하는 방법은 아직 까지는 next.js에서 지원하지 않음.
+       * https://github.com/vercel/next.js/discussions/44635 (참고)
+       */
 
-    return NextResponse.next();
+      const privateRoutes = ['/private-test']; // 회원 전용 접근 페이지
+      const publicRoutes = ['/login', '/signup']; // 비회원 전용 접근 페이지
+      const isPrivateRoute = privateRoutes.includes(pathname);
+      const isPublicRoute = publicRoutes.includes(pathname);
+
+      if (isPublicRoute) {
+        // 비회원 페이지 접근
+        if (accessToken) {
+          // 로그인 상태일 경우 메인 페이지로 이동
+          return NextResponse.redirect(new URL('/', request.url));
+        }
+
+        return NextResponse.next();
+      } else if (isPrivateRoute) {
+        // 회원 페이지 접근
+        if (!accessToken) {
+          // 로그인 상태가 아닐 경우 로그인 페이지로 이동
+          return NextResponse.redirect(new URL('/login', request.url));
+        }
+
+        return NextResponse.next();
+      } else {
+        // 모든 사용자 접근 페이지
+        return NextResponse.next();
+      }
+    }
   } catch (error) {
     console.error('[Middleware Error]', {
       path: request.nextUrl.pathname,
