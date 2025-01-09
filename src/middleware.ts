@@ -1,3 +1,4 @@
+// import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
@@ -12,18 +13,23 @@ export function middleware(request: NextRequest) {
 
     const { pathname } = request.nextUrl;
 
-    // API 요청 체크
+    // API 요청 설정
     if (pathname.startsWith('/api/')) {
       const newPath = pathname.replace('/api/', '/'); // 임의로 붙인 api 글자 제거
 
       // 새로운 요청 URL 생성
       const apiUrl = new URL(`${process.env.API_URL}${newPath}`);
 
-      // rewrite 응답 생성
-      const response = NextResponse.rewrite(apiUrl);
+      const accessToken = request.cookies.get('accessToken');
 
-      // 기본 헤더 설정
-      response.headers.set('Content-Type', 'application/json');
+      // rewrite 응답 생성
+      const response = NextResponse.rewrite(apiUrl, {
+        headers: {
+          ...request.headers,
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${accessToken?.value}`,
+        },
+      });
 
       return response;
     }
